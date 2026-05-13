@@ -1,9 +1,14 @@
 package com.github.mrjimin.crafttable.command
 
 import com.github.mrjimin.crafttable.inventory.CraftTableGUI
+import org.bukkit.Material
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import xyz.xenondevs.invui.gui.Gui
+import xyz.xenondevs.invui.item.Item
+import xyz.xenondevs.invui.item.ItemBuilder
+import xyz.xenondevs.invui.window.Window
 
 class CommandHandler : Command("crafttable") {
 

@@ -1,0 +1,19 @@
+example:
+  enable: true
+  permission: ""
+  result: AXE
+  ingredients:
+    - Stone:1
+    -
+example_1:
+  icon:
+  furniture-list: chopping_board
+  recipe-book:
+    item: nexo:addcook_item_recipe2
+    name: "<white>자른 삼겹살 레시피"
+  stage:
+    1: nexo:addcook_material_pork_belly
+  result:
+    - nexo:addcook_food_cutting_pork_belly 1 75,
+      nexo:addcook_food_cutting_pork_belly_silver 1 20,
+      nexo:addcook_food_cutting_pork_belly_golden 1 5

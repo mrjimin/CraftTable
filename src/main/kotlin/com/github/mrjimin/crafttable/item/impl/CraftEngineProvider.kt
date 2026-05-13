@@ -1,13 +1,11 @@
 package com.github.mrjimin.crafttable.item.impl
 
-import com.github.mrjimin.crafttable.item.ItemSource
+import com.github.mrjimin.crafttable.item.ItemProvider
 import net.momirealms.craftengine.bukkit.api.CraftEngineItems
 import net.momirealms.craftengine.core.util.Key
 import org.bukkit.inventory.ItemStack
 
-object CraftEngineSource : ItemSource {
-    override val plugin: String = "CRAFTENGINE"
-
+object CraftEngineProvider : ItemProvider {
     override fun build(id: String): ItemStack? {
         return CraftEngineItems.byId(Key.of(id))?.buildBukkitItem()
     }
@@ -20,4 +18,6 @@ object CraftEngineSource : ItemSource {
     override fun matches(itemStack: ItemStack): Boolean {
         return CraftEngineItems.getCustomItemId(itemStack) != null
     }
+
+    override fun identifier(): String = "craftengine"
 }

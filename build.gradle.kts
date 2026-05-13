@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "2.3.20"
     id("de.eldoria.plugin-yml.paper") version "0.9.0"
-    // id("com.gradleup.shadow") version "9.2.2"
+    id("com.gradleup.shadow") version "9.4.1"
 }
 
 group = "com.github.mrjimin.crafttable"
@@ -14,6 +14,7 @@ repositories {
         url = uri("https://repo.papermc.io/repository/maven-public/")
     }
     maven("https://repo.momirealms.net/snapshots/")
+    maven("https://repo.xenondevs.xyz/releases")
 }
 
 val craftEngineVersion = "26.5-SNAPSHOT"
@@ -24,7 +25,7 @@ dependencies {
     compileOnly("net.momirealms:craft-engine-core:$craftEngineVersion")
     compileOnly("net.momirealms:craft-engine-bukkit:$craftEngineVersion")
 
-    // implementation(kotlin("stdlib"))
+    implementation("xyz.xenondevs.invui:invui-kotlin:2.1.0")
 
     testImplementation(kotlin("test"))
 }
@@ -49,4 +50,14 @@ paper {
             required = true
         }
     }
+}
+
+val shadowJarPlugin = tasks.register<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJarPlugin") {
+    archiveFileName = "CraftTable-${project.version}.jar"
+    destinationDirectory.set(file("${project.rootDir}/target"))
+
+    from(sourceSets.main.get().output)
+    configurations = listOf(project.configurations.runtimeClasspath.get())
+
+    exclude("kotlin/**", "kotlinx/**")
 }
