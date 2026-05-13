@@ -61,6 +61,8 @@ example:
   fail:
     items:
       - material: "PRISMARINE_CRYSTALS"
+        amount: 1
     actions:
       - "message: &c제작에 실패하여 유물이 산산조각 났습니다."
       - "sound: ENTITY_ITEM_BREAK"
+      - "command: experience add %player_name% 50"

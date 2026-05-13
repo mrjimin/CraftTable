@@ -15,6 +15,7 @@ repositories {
     }
     maven("https://repo.momirealms.net/snapshots/")
     maven("https://repo.xenondevs.xyz/releases")
+    maven("https://repo.extendedclip.com/releases/")
 }
 
 val craftEngineVersion = "26.5-SNAPSHOT"
@@ -24,6 +25,7 @@ dependencies {
 
     compileOnly("net.momirealms:craft-engine-core:$craftEngineVersion")
     compileOnly("net.momirealms:craft-engine-bukkit:$craftEngineVersion")
+    compileOnly("me.clip:placeholderapi:2.12.2")
 
     implementation("xyz.xenondevs.invui:invui-kotlin:2.1.0")
 
