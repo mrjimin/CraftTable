@@ -25,7 +25,7 @@ data class DisplayData(
 data class RequirementData(
     val type: RequirementType,
     val material: String? = null,
-    val amount: Double = 0.0,
+    val amount: Int = 0,
     val consume: Boolean = true,
     val name: String? = null
 )

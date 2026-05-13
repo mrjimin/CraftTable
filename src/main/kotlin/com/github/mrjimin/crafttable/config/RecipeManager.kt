@@ -1,6 +1,7 @@
 package com.github.mrjimin.crafttable.config
 
 import com.github.mrjimin.crafttable.config.data.*
+import com.github.mrjimin.crafttable.engine.toActionDataList
 import com.github.mrjimin.crafttable.util.*
 import org.bukkit.configuration.ConfigurationSection
 
@@ -22,7 +23,7 @@ class RecipeManager {
                 RequirementData(
                     type = RequirementType.valueOf(it.getString("type", "ITEM")!!.uppercase()),
                     material = it.getString("material"),
-                    amount = it.getDouble("amount", 0.0),
+                    amount = it.getInt("amount", 0),
                     consume = it.getBoolean("consume", true),
                     name = it.getString("name")
                 )

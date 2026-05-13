@@ -30,6 +30,7 @@ dependencies {
     implementation("xyz.xenondevs.invui:invui-kotlin:2.1.0")
 
     testImplementation(kotlin("test"))
+    testImplementation("org.mockbukkit.mockbukkit:mockbukkit-v1.21:4.0.0")
 }
 
 kotlin {
