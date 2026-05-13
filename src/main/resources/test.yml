@@ -1,19 +1,66 @@
 example:
-  enable: true
-  permission: ""
-  result: AXE
-  ingredients:
-    - Stone:1
-    -
-example_1:
-  icon:
-  furniture-list: chopping_board
-  recipe-book:
-    item: nexo:addcook_item_recipe2
-    name: "<white>자른 삼겹살 레시피"
-  stage:
-    1: nexo:addcook_material_pork_belly
-  result:
-    - nexo:addcook_food_cutting_pork_belly 1 75,
-      nexo:addcook_food_cutting_pork_belly_silver 1 20,
-      nexo:addcook_food_cutting_pork_belly_golden 1 5
+  enabled: true
+  id: "ancient_relic_craft"
+  group: "LEGENDARY"
+  permission: "craft.ancient"
+
+  display:
+    material: "NETHER_STAR"
+    amount: 1
+    name: "&x&f&b&a&c&0&0고대의 유물: 성화"
+    lore:
+      - "&7전설 속의 성화를 복원합니다."
+      - ""
+      - "&6[ 필요 조건 ]"
+      - " &e• &f비용: &a10,000$"
+      - " &e• &f레벨: &b100 LV"
+      - " &e• &f장소: &c신전 (x:100, z:100)"
+      - ""
+      - "&8(성공률 15% | 실패 시 파편 획득)"
+
+  requirements:
+    - type: ITEM
+      material: "craftengine:"
+      amount: 2
+      consume: true # 제작 시 소모 여부
+    - type: MONEY
+      name: ""
+      amount: 10000
+#    - type: VAULT_CURRENCY
+#      name: "Point" # 특정 포인트 플러그인 연동용
+#      amount: 50
+
+  conditions:
+    - type: RADIUS
+      world: "world"
+      center: "100, 64, 100"
+      range: 10
+    - type: PLACEHOLDER
+      check: "%player_health% >= 20"
+    - type: WEATHER
+      value: "THUNDER"
+    - type: CHANCE
+      value: 0.15
+
+  process:
+    crafting_time: 100 # 틱 단위 (5초)
+    start_action:
+      - "title: &e제작 시작...; &f고대의 힘을 모으는 중"
+      - "sound: BLOCK_BEACON_ACTIVATE"
+    tick_action: # 제작 중 매 초마다 실행될 효과
+      - "particle: SOUL_FIRE_FLAME"
+
+  success:
+    items:
+      - material: "NETHER_STAR"
+    actions:
+      - "broadcast: &6[알림] &f%player_name%님이 &e고대의 유물&f 복원에 성공했습니다!"
+      - "command: give %player_name% experience 500"
+      - "sound: UI_TOAST_CHALLENGE_COMPLETE"
+
+  fail:
+    items:
+      - material: "PRISMARINE_CRYSTALS"
+    actions:
+      - "message: &c제작에 실패하여 유물이 산산조각 났습니다."
+      - "sound: ENTITY_ITEM_BREAK"
